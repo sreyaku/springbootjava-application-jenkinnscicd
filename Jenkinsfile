@@ -33,7 +33,7 @@ pipeline{
             agent any 
             steps{
    
-              bat '''
+              sh '''
                 docker container stop yourcontainer
             docker container rm yourcontainer
             docker image build -t testimage:1.0 .
