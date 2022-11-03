@@ -15,11 +15,10 @@ pipeline{
                 sh 'mvn compile'
             }
         }
-        
         stage('test'){
             agent any
             steps{
-               sh  'mvn test'
+                sh 'mvn test'
             }
         }
         stage('package'){
@@ -28,12 +27,10 @@ pipeline{
                 sh 'mvn package'
             }
         }
-    
-        stage(deploy){
-            agent any 
-            steps{
-   
-              sh '''
+        stage('deploy'){
+            agent any
+            steps{    
+                sh '''
                 docker container stop yourcontainer
             docker container rm yourcontainer
             docker image build -t testimage:1.0 .
